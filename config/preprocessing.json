@@ -1,0 +1,8 @@
+{
+ "source": "src/data/sequence_dataset.py (default_transform)",
+ "frame_extraction": "fixed stride per sequence, stored in capture order; per-site stride_sec is in corpus/sites.csv",
+ "max_width_px": 1280,
+ "img_size": 224,
+ "subsampling": "sequences longer than max-len are subsampled EVENLY, not truncated: index round(i*(n-1)/(max_len-1)) for i in 0..max_len-1, over ASSESSABLE frames only. Exact kept indices per site: corpus/indices_64.json.",
+ "exclusion_rule": "a frame labelled -1 by annotator A is dropped before subsampling and appears in no scored sequence"
+}

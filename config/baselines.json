@@ -1,0 +1,25 @@
+{
+ "source": "src/models/stage_sequence_model.py, src/models/tas_encoders.py",
+ "backbone": {
+  "default": "resnet18",
+  "alternatives_tested": [
+   "resnet50",
+   "convnext_tiny"
+  ],
+  "head": "classification head replaced by Identity",
+  "weights": "torchvision DEFAULT, locally cached"
+ },
+ "temporal_encoders": {
+  "none": "frames independent; emissions are per-frame CNN outputs",
+  "lstm": "nn.LSTM, bidirectional, hidden 256, 1 layer",
+  "transformer": "nn.TransformerEncoder, 8 heads, ff 4*256, dropout 0.1, sinusoidal positional encoding",
+  "mstcn": "MS-TCN, emits class logits directly, per-stage auxiliary losses",
+  "asformer": "ASFormer, same slot and loss structure as mstcn"
+ },
+ "optimiser": {
+  "name": "Adam",
+  "backbone_lr": 0.0001,
+  "head_lr": 0.001,
+  "epochs": 10
+ }
+}

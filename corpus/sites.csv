@@ -1,0 +1,22 @@
+site,in_corpus,source_url,license_note,stride_sec,n_raw_frames,n_labelled,n_excluded,n_scored,stages_present,n_stages,annotation_b,protocol_round
+seq0003,1,https://www.youtube.com/watch?v=Xccy4o2SvGk,YouTube Standard License,5.0,244,241,3,64,0|1|2|3|4,5,1,1
+seq0004,1,https://www.youtube.com/watch?v=C3iI6S7TuCA,YouTube Standard License,5.0,89,86,3,64,0|1|2|3|4,5,1,2
+seq0005,1,https://www.youtube.com/watch?v=UD9kdZtL9l0,YouTube Standard License,5.0,835,830,5,64,0|1|2|3|4,5,1,2
+seq0007,1,https://www.youtube.com/watch?v=Y6M5GRqGFeQ,YouTube Standard License,5.0,357,340,17,64,0|1|2|3|4,5,1,2
+seq0008,1,https://www.youtube.com/watch?v=fYaqBeJHZMA,YouTube Standard License,5.0,28,28,0,28,0|1,2,1,2
+seq0009,1,https://www.youtube.com/watch?v=p1EvNfQ8vh0,YouTube Standard License,,257,257,0,64,0,1,1,2
+seq0011,1,https://www.youtube.com/watch?v=xyaGxIzIe9U,YouTube Standard License,5.0,21,20,1,20,1|2|3|4,4,1,2
+seq0012,1,https://www.youtube.com/watch?v=V2SvGw6c4CQ,YouTube Standard License,5.0,96,96,0,64,0|1|2|3,4,1,1
+seq0014,1,https://www.youtube.com/watch?v=RprMgAcrpmg,YouTube Standard License,5.0,46,45,1,45,0|1|2|3|4,5,1,2
+seq0015,1,https://www.youtube.com/watch?v=btGWg-IPwlY,YouTube Standard License,5.0,19,19,0,19,0|1|2|3,4,1,2
+seq0018,1,https://www.youtube.com/watch?v=ZE7M70GWIJY,YouTube Standard License,5.0,145,129,16,64,0|1|2|3|4,5,1,1
+seq0001,1,https://www.youtube.com/watch?v=GI795fZuxCc,YouTube Standard License,,101,91,10,64,0|1|2,3,1,2
+seq0010,1,https://www.youtube.com/watch?v=ABvUTcVqfMY,YouTube Standard License,5.0,108,103,5,64,0|1|2|3|4,5,1,1
+seq0002,0,https://www.youtube.com/watch?v=VELDABqqJNk,YouTube Standard License,5.0,6,0,,0,,,0,
+seq0006,0,https://www.youtube.com/watch?v=gXNIQJCODsQ,YouTube Standard License,5.0,4,0,,0,,,0,
+seq0013,0,https://www.youtube.com/watch?v=vzTwd4Kqkr8,YouTube Standard License,5.0,1,0,,0,,,0,
+seq0016,0,https://www.youtube.com/watch?v=8agE6wNWwR0,YouTube Standard License,5.0,166,0,,0,,,0,
+seq0017,0,https://www.youtube.com/watch?v=g61gtD3GobM,YouTube Standard License,5.0,183,0,,0,,,0,
+seq0019,0,https://www.youtube.com/watch?v=8HZIQGZcNm4,YouTube Standard License,5.0,150,0,,0,,,0,
+seq0020,0,https://www.youtube.com/watch?v=1DL2TMnjSeg,YouTube Standard License,5.0,224,224,,0,,,0,
+seq0022,0,https://www.youtube.com/watch?v=D_6bybopndQ,YouTube Standard License,8.0,335,335,,0,,,0,

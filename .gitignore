@@ -1,0 +1,8 @@
+# The package is a published artifact, not a working directory. Anything that
+# records where it was built rather than what it contains stays out.
+__pycache__/
+*.pyc
+*.log
+*.bak
+.DS_Store
+Thumbs.db

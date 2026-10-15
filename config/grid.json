@@ -1,0 +1,37 @@
+{
+ "protocol": "leave-one-site-out; each of the 13 sites is held out once, the other 12 train. No validation split: the epoch count is fixed in advance and no epoch is selected on held-out data.",
+ "arms": {
+  "none": "per-frame cross-entropy + argmax (no CRF)",
+  "free": "CRF, learned transitions, no prior",
+  "hard": "CRF, backward penalty 10000 (rigid)",
+  "gated": "CRF, sigmoid-gated prior, gate_init 2.0 (ours)",
+  "soft": "CRF, fixed effective penalty 7.046, gate frozen, no regulariser (added in revision, reviewer 2)",
+  "none+lstm": "bidirectional LSTM + per-frame CE",
+  "none+mstcn": "MS-TCN",
+  "none+asformer": "ASFormer"
+ },
+ "seeds": [
+  0,
+  1,
+  2
+ ],
+ "folds": 13,
+ "runs_per_arm": 39,
+ "defaults_verified_against": "src/experiments/run_loso.py",
+ "defaults": {
+  "data": "seq_data",
+  "num-stages": 5,
+  "epochs": 10,
+  "img-size": 224,
+  "max-len": 64,
+  "batch-size": 1,
+  "backbone-lr": 0.0001,
+  "head-lr": 0.001,
+  "reg-weight": 0.1,
+  "backward-bias": 8.0,
+  "gate-init": 2.0,
+  "backbone": "resnet18"
+ },
+ "launcher": "experiments/loso/run_grid.bat",
+ "batch_size_note": "batch-size 1 is required to reproduce the published grid. A run at batch-size 2 reproduced only 6 of 39 cells; that grid is archived under rerun/discarded_batchsize2_results.jsonl."
+}

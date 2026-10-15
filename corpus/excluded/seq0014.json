@@ -1,0 +1,9 @@
+{
+ "site": "seq0014",
+ "rule": "label -1 in annotator A's labels.csv; excluded before subsampling, so these frames are in no scored sequence",
+ "n_raw_frames": 46,
+ "n_excluded": 1,
+ "excluded_raw_indices": [
+  45
+ ]
+}
