@@ -4,6 +4,14 @@ Code, annotations and results for **"How much is construction monotonicity
 worth? Rigid versus learnable sequence priors for image-based progress
 recognition"** (International Journal of Intelligent Engineering and Systems).
 
+Omar Amer Mohammed<sup>1</sup>, Jamal Mustafa Al-Tuwaijari<sup>1</sup>,
+Amer Mohammed Al-Mahdawi<sup>2</sup>
+
+<sup>1</sup> Department of Computer Science, College of Science, University of
+Diyala, Iraq<br>
+<sup>2</sup> Department of Civil Engineering, College of Engineering,
+University of Diyala, Iraq
+
 The paper asks a narrow question: a construction site normally moves forward,
 so what is it worth to *tell* a stage-recognition model that? And is it better
 to impose that ordering rigidly, or to let the model learn when to relax it?
@@ -164,7 +172,13 @@ is no single model to ship; the configurations and seeds are in `config/`.
 }
 ```
 
+## Citing this
+
+Please cite the article rather than the repository; `CITATION.cff` carries the
+same details in machine-readable form. The article is under review, so it has
+no DOI, volume or page numbers yet — those are added here on acceptance.
+
 ## Licence
 
-MIT for the code, annotations and derived results — see `LICENSE`. The source
-videos are **not** covered by it.
+MIT for the code, annotations and derived results — see `LICENSE`, which names
+the same three authors. The source videos are **not** covered by it.

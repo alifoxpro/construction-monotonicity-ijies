@@ -38,6 +38,7 @@ import io
 import json
 import re
 import shutil
+from datetime import date
 import sys
 from pathlib import Path
 
@@ -59,6 +60,26 @@ FIGURES_SHIPPED = [
     ("paper-fig3-rework-sweep", "rework-sweep.png"),
 ]
 FIG_DPI = 170
+
+#: Authors of the manuscript, in submission order, from its front matter.
+#: (family-names, given-names, affiliation). Their e-mail addresses are in the
+#: manuscript as well and are intentionally not republished here.
+AUTHORS = [
+    ("Mohammed", "Omar Amer",
+     "Department of Computer Science, College of Science, "
+     "University of Diyala, Iraq"),
+    ("Al-Tuwaijari", "Jamal Mustafa",
+     "Department of Computer Science, College of Science, "
+     "University of Diyala, Iraq"),
+    ("Al-Mahdawi", "Amer Mohammed",
+     "Department of Civil Engineering, College of Engineering, "
+     "University of Diyala, Iraq"),
+]
+PAPER_TITLE = ("How much is construction monotonicity worth? Rigid versus "
+               "learnable sequence priors for image-based progress recognition")
+PAPER_JOURNAL = "International Journal of Intelligent Engineering and Systems"
+PAPER_STATUS = "Under review (manuscript 20266482)"
+PAPER_YEAR = 2026
 MAX_LEN = 64
 
 #: Scripts that produce a displayed table, figure or test. Copied verbatim so the
@@ -429,6 +450,36 @@ def main() -> int:
         "comparability of that row and is stated in the paper.\n",
         encoding="utf-8")
 
+    # ---- CITATION.cff -----------------------------------------------------
+    # Gives GitHub its "Cite this repository" button. No DOI, volume or pages:
+    # the article is under review and does not have them yet.
+    cff = ["cff-version: 1.2.0",
+           "message: >-",
+           "  If you use this package, please cite the article below rather",
+           "  than the repository.",
+           "title: \"Construction monotonicity: reproducibility package\"",
+           f"date-released: \"{date.today().isoformat()}\"",
+           "license: MIT",
+           "type: dataset",
+           "authors:"]
+    for family, given, affil in AUTHORS:
+        cff += [f"  - family-names: \"{family}\"",
+                f"    given-names: \"{given}\"",
+                f"    affiliation: \"{affil}\""]
+    cff += ["preferred-citation:",
+            "  type: article",
+            f"  title: \"{PAPER_TITLE}\"",
+            f"  journal: \"{PAPER_JOURNAL}\"",
+            f"  year: {PAPER_YEAR}",
+            f"  notes: \"{PAPER_STATUS}\"",
+            "  authors:"]
+    for family, given, affil in AUTHORS:
+        cff += [f"    - family-names: \"{family}\"",
+                f"      given-names: \"{given}\"",
+                f"      affiliation: \"{affil}\""]
+    (OUT / "CITATION.cff").write_text("\n".join(cff) + "\n", encoding="utf-8")
+    print(f"CITATION.cff: {len(AUTHORS)} authors, status {PAPER_STATUS!r}")
+
     # ---- figures ----------------------------------------------------------
     # Derived artwork only. paper-fig0-stages is excluded on purpose: it is
     # built from real example frames, which the source videos' licence does not
@@ -495,6 +546,14 @@ def main() -> int:
 Code, annotations and results for **"How much is construction monotonicity
 worth? Rigid versus learnable sequence priors for image-based progress
 recognition"** (International Journal of Intelligent Engineering and Systems).
+
+Omar Amer Mohammed<sup>1</sup>, Jamal Mustafa Al-Tuwaijari<sup>1</sup>,
+Amer Mohammed Al-Mahdawi<sup>2</sup>
+
+<sup>1</sup> Department of Computer Science, College of Science, University of
+Diyala, Iraq<br>
+<sup>2</sup> Department of Civil Engineering, College of Engineering,
+University of Diyala, Iraq
 
 The paper asks a narrow question: a construction site normally moves forward,
 so what is it worth to *tell* a stage-recognition model that? And is it better
@@ -649,10 +708,16 @@ is no single model to ship; the configurations and seeds are in `config/`.
 {json.dumps(env, indent=1)}
 ```
 
+## Citing this
+
+Please cite the article rather than the repository; `CITATION.cff` carries the
+same details in machine-readable form. The article is under review, so it has
+no DOI, volume or page numbers yet — those are added here on acceptance.
+
 ## Licence
 
-MIT for the code, annotations and derived results — see `LICENSE`. The source
-videos are **not** covered by it.
+MIT for the code, annotations and derived results — see `LICENSE`, which names
+the same three authors. The source videos are **not** covered by it.
 """, encoding="utf-8")
 
     # ---- checksums over everything in the package -------------------------

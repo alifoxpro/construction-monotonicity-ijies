@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: >-
+  If you use this package, please cite the article below rather
+  than the repository.
+title: "Construction monotonicity: reproducibility package"
+date-released: "2026-10-15"
+license: MIT
+type: dataset
+authors:
+  - family-names: "Mohammed"
+    given-names: "Omar Amer"
+    affiliation: "Department of Computer Science, College of Science, University of Diyala, Iraq"
+  - family-names: "Al-Tuwaijari"
+    given-names: "Jamal Mustafa"
+    affiliation: "Department of Computer Science, College of Science, University of Diyala, Iraq"
+  - family-names: "Al-Mahdawi"
+    given-names: "Amer Mohammed"
+    affiliation: "Department of Civil Engineering, College of Engineering, University of Diyala, Iraq"
+preferred-citation:
+  type: article
+  title: "How much is construction monotonicity worth? Rigid versus learnable sequence priors for image-based progress recognition"
+  journal: "International Journal of Intelligent Engineering and Systems"
+  year: 2026
+  notes: "Under review (manuscript 20266482)"
+  authors:
+    - family-names: "Mohammed"
+      given-names: "Omar Amer"
+      affiliation: "Department of Computer Science, College of Science, University of Diyala, Iraq"
+    - family-names: "Al-Tuwaijari"
+      given-names: "Jamal Mustafa"
+      affiliation: "Department of Computer Science, College of Science, University of Diyala, Iraq"
+    - family-names: "Al-Mahdawi"
+      given-names: "Amer Mohammed"
+      affiliation: "Department of Civil Engineering, College of Engineering, University of Diyala, Iraq"
