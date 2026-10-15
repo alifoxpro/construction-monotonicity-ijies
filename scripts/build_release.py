@@ -80,6 +80,10 @@ PAPER_TITLE = ("How much is construction monotonicity worth? Rigid versus "
 PAPER_JOURNAL = "International Journal of Intelligent Engineering and Systems"
 PAPER_STATUS = "Under review (manuscript 20266482)"
 PAPER_YEAR = 2026
+#: Fixed, not date.today(). This is the date the package was released, which
+#: does not change because it was rebuilt; letting it track "today" made every
+#: rebuild produce a CITATION.cff diff with no change behind it.
+RELEASE_DATE = "2026-10-15"
 MAX_LEN = 64
 
 #: Scripts that produce a displayed table, figure or test. Copied verbatim so the
@@ -466,7 +470,7 @@ def main() -> int:
            "  If you use this package, please cite the article below rather",
            "  than the repository.",
            "title: \"Construction monotonicity: reproducibility package\"",
-           f"date-released: \"{date.today().isoformat()}\"",
+           f"date-released: \"{RELEASE_DATE}\"",
            "license: MIT",
            "type: dataset",
            "authors:"]
