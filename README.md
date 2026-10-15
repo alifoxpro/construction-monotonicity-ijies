@@ -8,7 +8,26 @@ The paper asks a narrow question: a construction site normally moves forward,
 so what is it worth to *tell* a stage-recognition model that? And is it better
 to impose that ordering rigidly, or to let the model learn when to relax it?
 
+![The method: a frozen ResNet18 feeds a sequence layer whose transition matrix
+is the only thing varied, decoded by Viterbi. The three parameterisations are a
+free CRF, a rigid monotonic prior, and a gate that can learn to reopen backward
+transitions.](figures/method.png)
+
+The backbone, the features and the training schedule are identical across arms.
+**Only the transition matrix changes**, so a difference between arms is
+attributable to the prior and not to capacity. Panel (C) shows what this buys:
+the per-frame baseline decodes stage sequences that step backwards -- a
+building that un-builds itself -- and the rigid arm cannot.
+
 ## What the study found
+
+![Per-arm results over 13 held-out sites. Accuracy, macro-F1, edit score, F1@50
+and stage-onset error, with the image-free control drawn as a dashed line
+across every panel; below them the order-violation rate per arm and the
+rigid-versus-gated contrast paired by site.](figures/results.png)
+
+The dashed line in every panel is the image-free control. Where a bar does not
+clear it, the arm has not been shown to use the images at all.
 
 * **Encoding the domain beats adding architecture.** Moving from a free
   linear-chain CRF to a rigid monotonicity prior raises segmental F1@50 by
@@ -29,6 +48,18 @@ The third point is the one we would most want carried into other work:
 consistency before training**, because those three quantities decide whether an
 experiment can support the claim it was built to make.
 
+## The counterfactual the corpus cannot provide
+
+![Synthetic sweep: as re-work is injected into generated sequences at a rising
+rate, the rigid prior's advantage narrows and then inverts, while the gate --
+now with backward transitions to learn from -- recovers.](figures/rework-sweep.png)
+
+The real corpus contains no re-work, so it cannot show what either prior does
+when a site goes backwards. The synthetic study supplies that: with re-work
+injected at a known rate the gate does learn to reopen backward transitions,
+which places the flat gate in the real runs on **this corpus** rather than on
+the parameterisation. It is a generator, not a site, and is reported as such.
+
 ## Layout
 
 ```
@@ -40,6 +71,7 @@ predictions/  195 decoded stage tracks, one per (arm, site, seed)
 synthetic/    generator settings and every per-seed outcome
 rerun/        three disclosed reproductions, including a discarded one
 scripts/      every script that produces a table in the paper or supplement
+figures/      the paper's derived figures (no photographs -- see below)
 ```
 
 `CHECKSUMS.sha256` covers every file above.
@@ -78,6 +110,11 @@ parameters, and `corpus/manifest.csv` carries a **SHA-256 for every frame**, so
 anyone who re-extracts from the originals can prove they hold the same pixels
 that were scored. Re-extracting binds you to the original videos' terms, not to
 this repository's licence.
+
+The figures in `figures/` are exempt because they contain no photograph: each
+is rendered from a vector PDF, and `build_release.py` **fails the build** if
+that PDF carries an embedded raster. The paper's stage-taxonomy figure, which
+is built from real example frames, is for that reason not in this repository.
 
 **No pretrained weights.** Every result is a 13-fold cross-validation, so there
 is no single model to ship; the configurations and seeds are in `config/`.

@@ -1,0 +1,3 @@
+method.png	diagrams/paper-fig1-method.pdf
+results.png	diagrams/paper-fig2-results-r1.pdf
+rework-sweep.png	diagrams/paper-fig3-rework-sweep.pdf
