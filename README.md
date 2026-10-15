@@ -157,6 +157,7 @@ is no single model to ship; the configurations and seeds are in `config/`.
 | decoded predictions | `predictions/pred_<site>_<arm>_seed<n>.json` |
 | synthetic studies | `synthetic/` |
 | disclosed reruns | `rerun/notes.md` |
+| figure-generation scripts | `scripts/plot_results.py`, `scripts/plot_concentration.py`, `scripts/rework_sweep.py`, `scripts/make_stage_figure.py` |
 | blinded annotation study | `scripts/blind_pairs.py`, `scripts/blind_pairs_analysis.py` |
 
 ## Environment the published numbers were produced on

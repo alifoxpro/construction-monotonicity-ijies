@@ -1,3 +1,21 @@
+# published figure <- source artwork
+#
+# results.png is NOT the default output of plot_results.py. Its
+# ASFormer arm comes from the corrected implementation, not the
+# superseded one that --tas points at by default. The two grids were
+# merged first:
+#
+#   mstcn    <- experiments/tas/results.jsonl              (published)
+#   asformer <- experiments/tas_asformer_fixed/results.jsonl (corrected)
+#
+# then:
+#   python scripts/plot_results.py \
+#       --results experiments/loso/results.jsonl \
+#       --tas <merged file> --out figures/results
+#
+# This is the same per-arm provenance that uncertainty.py's ARM_SOURCE
+# uses for every contrast reported in the paper.
+
 method.png	diagrams/paper-fig1-method.pdf
 results.png	diagrams/paper-fig2-results-r1.pdf
 rework-sweep.png	diagrams/paper-fig3-rework-sweep.pdf

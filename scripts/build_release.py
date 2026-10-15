@@ -120,6 +120,14 @@ SCRIPTS = [
     "src/experiments/schedule_linkage.py",
     "src/data_collection/annotator_b_agreement.py",
     "src/experiments/build_release.py",
+    # Figure generation. The Data Availability Statement promises these by
+    # name, and the package shipped without them. make_stage_figure.py is
+    # included although its figure is NOT published: the script is ours, the
+    # frames it draws are not, and shipping the code is what lets a reader see
+    # how the excluded figure was built.
+    "src/experiments/plot_results.py",
+    "src/experiments/plot_concentration.py",
+    "src/experiments/make_stage_figure.py",
 ]
 
 #: The published grid, as run. Each entry is checked against the argparse default
@@ -504,8 +512,32 @@ def main() -> int:
         doc[0].get_pixmap(dpi=FIG_DPI).save(str(OUT / "figures" / out_name))
         doc.close()
         fig_lines.append(f"{out_name}\tdiagrams/{stem}.pdf")
-    (OUT / "figures/SOURCES.txt").write_text("\n".join(fig_lines) + "\n",
-                                             encoding="utf-8")
+    # plot_results.py's --tas DEFAULT is experiments/tas, which holds the
+    # SUPERSEDED ASFormer arm: running it plainly reproduces the stale figure.
+    # The command that actually produced results.png is recorded here rather
+    # than left for a reader to rediscover by getting a different picture.
+    fig_header = [
+        "# published figure <- source artwork",
+        "#",
+        "# results.png is NOT the default output of plot_results.py. Its",
+        "# ASFormer arm comes from the corrected implementation, not the",
+        "# superseded one that --tas points at by default. The two grids were",
+        "# merged first:",
+        "#",
+        "#   mstcn    <- experiments/tas/results.jsonl              (published)",
+        "#   asformer <- experiments/tas_asformer_fixed/results.jsonl (corrected)",
+        "#",
+        "# then:",
+        "#   python scripts/plot_results.py \\",
+        "#       --results experiments/loso/results.jsonl \\",
+        "#       --tas <merged file> --out figures/results",
+        "#",
+        "# This is the same per-arm provenance that uncertainty.py's ARM_SOURCE",
+        "# uses for every contrast reported in the paper.",
+        "",
+    ]
+    (OUT / "figures/SOURCES.txt").write_text(
+        "\n".join(fig_header + fig_lines) + "\n", encoding="utf-8")
     print(f"figures: {len(fig_lines)} rendered, 0 embedded rasters in any")
 
     # ---- scripts ----------------------------------------------------------
@@ -700,6 +732,7 @@ is no single model to ship; the configurations and seeds are in `config/`.
 | decoded predictions | `predictions/pred_<site>_<arm>_seed<n>.json` |
 | synthetic studies | `synthetic/` |
 | disclosed reruns | `rerun/notes.md` |
+| figure-generation scripts | `scripts/plot_results.py`, `scripts/plot_concentration.py`, `scripts/rework_sweep.py`, `scripts/make_stage_figure.py` |
 | blinded annotation study | `scripts/blind_pairs.py`, `scripts/blind_pairs_analysis.py` |
 
 ## Environment the published numbers were produced on

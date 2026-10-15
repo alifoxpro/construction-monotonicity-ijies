@@ -3,7 +3,7 @@ message: >-
   If you use this package, please cite the article below rather
   than the repository.
 title: "Construction monotonicity: reproducibility package"
-date-released: "2026-10-15"
+date-released: "2026-10-16"
 license: MIT
 type: dataset
 authors:
