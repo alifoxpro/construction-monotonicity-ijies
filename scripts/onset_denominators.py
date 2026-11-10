@@ -172,9 +172,21 @@ def main() -> int:
         print(f"  4.65 = the SITE mean : {h['site_mean']:.2f} over "
               f"{h['n_sites_contributing']} of {h['n_sites_total']} sites "
               f"(dropped: {', '.join(h['sites_dropped']) or 'none'})")
+        # These two numbers are DIFFERENT AGGREGATIONS and printing them in one
+        # breath is what put an unlabelled 0.61 next to a 98/156 in the paper:
+        # a reader divides 98 by 156, gets 0.63, and reasonably calls it an
+        # arithmetic error. Keep them separated and named.
+        pooled = 1.0 - h["missing_terms"] / h["stage_terms"]
         print(f"  both are computed over {h['stage_terms'] - h['missing_terms']} "
-              f"of {h['stage_terms']} gold stage onsets, a coverage of "
-              f"{h['coverage']:.2f}")
+              f"of {h['stage_terms']} gold stage onsets")
+        print(f"  coverage, mean of the {h['n_runs_total']} per-run coverages "
+              f": {h['coverage']:.4f} ({h['coverage']:.2f})")
+        print(f"  coverage, pooled over those same counts        "
+              f": {pooled:.4f} ({pooled:.2f})")
+        print(f"  the two differ because sites carry unequal numbers of scored")
+        print(f"  stages and of missed ones, so a mean of ratios is not the")
+        print(f"  ratio of sums. The paper reports the per-run mean, because")
+        print(f"  the error it qualifies is itself a run mean.")
         print(f"\nNeither is a full-corpus estimate. Both are subset estimates and")
         print(f"should be labelled as such wherever they appear.")
 

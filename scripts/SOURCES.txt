@@ -19,6 +19,7 @@ blind_pairs_analysis.py	src/data_collection/blind_pairs_analysis.py
 make_blind_batches.py	src/data_collection/make_blind_batches.py
 anonymise_blind_frames.py	src/data_collection/anonymise_blind_frames.py
 gate_gradient.py	src/experiments/gate_gradient.py
+gate_identifiability.py	src/experiments/gate_identifiability.py
 penalty_bound.py	src/experiments/penalty_bound.py
 rework_sweep.py	src/experiments/rework_sweep.py
 rework_concentration.py	src/experiments/rework_concentration.py

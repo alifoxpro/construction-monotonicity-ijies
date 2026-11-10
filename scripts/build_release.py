@@ -110,6 +110,7 @@ SCRIPTS = [
     "src/data_collection/make_blind_batches.py",
     "src/data_collection/anonymise_blind_frames.py",
     "src/experiments/gate_gradient.py",
+    "src/experiments/gate_identifiability.py",
     "src/experiments/penalty_bound.py",
     "src/experiments/rework_sweep.py",
     "src/experiments/rework_concentration.py",
@@ -675,6 +676,7 @@ python scripts/uncertainty.py            # intervals, site sensitivity, multipli
 python scripts/f1_aggregation.py         # the aggregation rule behind Section 6.2
 python scripts/penalty_bound.py          # the score bound behind the rigid arm
 python scripts/gate_gradient.py          # likelihood vs regulariser gate gradient
+python scripts/gate_identifiability.py   # is one gate identifiable at all
 python scripts/violation_provenance.py   # why the violation rate is 0.000
 python scripts/onset_denominators.py     # every onset figure with its denominators
 python scripts/asformer_equivalence.py   # ASFormer against the reference code
